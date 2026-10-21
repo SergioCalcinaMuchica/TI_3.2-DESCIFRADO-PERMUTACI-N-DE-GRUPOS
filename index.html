@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Permutación de grupos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pagina">
+
+    <header class="encabezado">
+      <h1>Permutación de grupos</h1>
+      <p>Cifra y descifra mensajes reordenando las letras de cada grupo con una clave.</p>
+    </header>
+
+    <section class="tarjeta">
+
+      <!-- Selector de modo -->
+      <div class="fila-modo">
+        <span class="etiqueta">Modo</span>
+        <div class="selector" role="group" aria-label="Modo">
+          <button type="button" class="opcion activa" data-modo="cifrar">Cifrar</button>
+          <button type="button" class="opcion" data-modo="descifrar">Descifrado con Clave</button>
+          <button type="button" class="opcion" data-modo="sin-clave">Descifrado sin Clave</button>
+        </div>
+      </div>
+
+      <!-- Mensaje -->
+      <label class="etiqueta" for="mensaje" id="etiqueta-mensaje">Mensaje de entrada</label>
+      <textarea id="mensaje" rows="4" placeholder="Hola Mundo"></textarea>
+
+      <label class="casilla">
+        <input type="checkbox" id="espacios" checked>
+        Los espacios son parte del mensaje
+      </label>
+
+      <!-- Clave (modos cifrar y descifrar) -->
+      <div id="bloque-clave">
+        <label class="etiqueta" for="clave">Clave <span class="ayuda">por ejemplo 3,1,2 o 3 1 2</span></label>
+        <input type="text" id="clave" placeholder="3,1,2" autocomplete="off">
+      </div>
+
+      <!-- Tamaño del grupo (modo sin clave) -->
+      <div id="bloque-tamano" hidden>
+        <label class="etiqueta" for="tamano">Tamaño del grupo <span class="ayuda">de 2 a 8</span></label>
+        <input type="number" id="tamano" min="2" max="8" placeholder="3">
+      </div>
+
+      <div class="botones">
+        <button type="button" id="boton-procesar" class="principal">Procesar</button>
+        <button type="button" id="boton-limpiar" class="secundario">Limpiar</button>
+        <button type="button" id="boton-ejemplo" class="enlace">Cargar ejemplo</button>
+      </div>
+
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <!-- Resultado -->
+      <div id="zona-resultado" hidden>
+        <div class="cabecera-resultado">
+          <span class="etiqueta">Resultado</span>
+          <button type="button" id="boton-copiar" class="pequeno">Copiar</button>
+        </div>
+        <div id="resultado" class="resultado" aria-live="polite"></div>
+        <p id="nota" class="nota" hidden></p>
+      </div>
+
+      <!-- Pasos del proceso -->
+      <details id="zona-pasos" class="pasos" hidden open>
+        <summary>
+          <span id="titulo-pasos">Pasos del proceso</span>
+        </summary>
+        <div id="contenido-pasos"></div>
+      </details>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
